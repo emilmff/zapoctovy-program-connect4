@@ -5,24 +5,15 @@ from copy import deepcopy
 import pygame
 import sys
 
-WHITE = 1
-BLACK = -1
-EMPTY = 0
-
 SQUARESIZE = 85
 RADIUS = SQUARESIZE//2-3
 
-GREEN = (0, 130, 0)
 BROWN_COLOR = (90, 30, 5)
-BLACK_COLOR = (0, 0, 0)
-GREY = (155, 85, 38)
-WHITE_COLOR = (255, 255, 255)
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
 CYAN = (0, 255, 255)
 ORANGE = (200, 121, 0)
-NAVY = (0, 0, 128)
-AQUA = (127, 255, 212)
 BLUE = (25, 25, 112)
-GREY_COLOR = (155, 155, 155)
 RED = (255,0,0)
 
 def draw_text(text, font, color, surface, x, y):
@@ -64,7 +55,7 @@ class minimax_player:
 
 	def get_move(self,board,screen):
 		m = Minimax(deepcopy(board))
-		self.val, turn = m.minimax(9,-inf,inf,True,None,None)
+		self.val, turn = m.minimax(7,-inf,inf,True,None,None)
 		return turn
 
 class Game_Loop:
@@ -94,11 +85,11 @@ class Game_Loop:
 				elif self.board.board[c][r] == -1: 
 					pygame.draw.circle(self.screen, BROWN_COLOR, (int(r*SQUARESIZE+SQUARESIZE/2), int((c+1)*SQUARESIZE+SQUARESIZE/2)), RADIUS)
 				else:
-					pygame.draw.circle(self.screen, WHITE_COLOR, (int(r*SQUARESIZE+SQUARESIZE/2), int((c+1)*SQUARESIZE+SQUARESIZE/2)), RADIUS)
+					pygame.draw.circle(self.screen, WHITE, (int(r*SQUARESIZE+SQUARESIZE/2), int((c+1)*SQUARESIZE+SQUARESIZE/2)), RADIUS)
 		if self.board.rows>self.board.cols:
-			pygame.draw.rect(self.screen,RED,(self.board.cols*SQUARESIZE,0,SQUARESIZE,SQUARESIZE*(self.board.rows+1)))
+			pygame.draw.rect(self.screen,RED,(self.board.cols*SQUARESIZE,0,SQUARESIZE*(self.board.rows-self.board.cols),SQUARESIZE*(self.board.rows+1)))
 		elif self.board.rows<self.board.cols:
-			pygame.draw.rect(self.screen,RED,(0,(self.board.rows+1)*SQUARESIZE,SQUARESIZE*(self.board.cols+1),SQUARESIZE))
+			pygame.draw.rect(self.screen,RED,(0,(self.board.rows+1)*SQUARESIZE,SQUARESIZE*(self.board.cols+1),SQUARESIZE*(self.board.cols-self.board.rows)))
 		pygame.display.update()
 
 	def loop(self):
@@ -106,7 +97,6 @@ class Game_Loop:
 		self.draw_board()
 		while end != True:
 			if self.board.possible_moves():
-				self.board.print()
 				turn = self.board.turn
 				col = self.call[turn].get_move(self.board,self.screen)
 				while col is None:

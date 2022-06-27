@@ -75,18 +75,16 @@ class Board:
         return self.search_direction((0,col),(1,0))[0] == 0
 
     def check_for_win(self,row,col,color,debug=False):
-        """this function sucks"""
         dirs = []
         for i in range(-1,1):
             for j in range(-1,1):
                 if i!=0 or j != 0:
-                    #print(row,col)
                     first_part =self.search_direction((row,col),(i,j))
                     first_part.reverse()
                     dirs.append(first_part+self.search_direction((row,col),(-i,-j))[1:])
         first_part = self.search_direction((row,col),(1,-1))
         first_part.reverse()
-        dirs.append(first_part+self.search_direction((row,col),(-1,1))[1:]) #this is weird, couldnt figure out how to put it in the loop, negative diagonal
+        dirs.append(first_part+self.search_direction((row,col),(-1,1))[1:])
         if debug:
             print(dirs)
         for dir in dirs:
@@ -111,22 +109,9 @@ class Board:
         if self.in_range(None,col):
             cesta = self.search_direction((0,col),(1,0))
             i= 0
-            if cesta[i] != 0:
-                exit("CHYBA, TAM UZ NECO JE")
-            else:
-                while i < self.rows and cesta[i] == 0:
-                    i+=1
-                self.set(i-1,col,color)
-                return i-1,col
-        exit("CHYBA, DROP PIECE MIMO RANGE")
+            while i < self.rows and cesta[i] == 0:
+                i+=1
+            self.set(i-1,col,color)
+            return i-1,col
+
         
-            
-'''
-board = Board()
-board.print().drop_piece(0)
-board.drop_piece(1)
-board.drop_piece(2)
-board.drop_piece(3)
-board.print()
-print(board.check_for_win(3,3,1))
-'''

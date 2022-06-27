@@ -21,18 +21,16 @@ class Minimax:
 		for i in range(self.board.cols):
 			for j in range (-1,2):				
 				dirs.append(self.board.search_direction((0,i),(1,j)))
-		#print(dirs)
+		
 		for dir in dirs:
 			chunks = []				
 			for i in range(1,(len(dir)//4)+1):
 				chunks.append(dir[(i-1)*4:i*4])
 			if len(dir)%4 != 0:
 				chunks.append(dir[len(dir)-len(dir)%4:])
-			#print(chunks)
 			for c in chunks:
 				dic[c.count(self.colors[True])-c.count(self.colors[False])] +=1				
 		score = dic[-3]*-24 + dic[-2]*-9+dic[2]*10+dic[3]*25
-		#print(score)
 		return score
 
 	def minimax(self, depth, alpha, beta, maximizing,prev_row,prev_col):
@@ -53,12 +51,7 @@ class Minimax:
 		if not self.board.possible_moves():
 			return 0,None
 		elif depth == 0:
-			try:
-				return self.eval(),None
-			except:
-				self.board.print()
-				#self.eval(True)
-				return		
+			return self.eval(),None	
 
 		if maximizing:
 			value = -inf
