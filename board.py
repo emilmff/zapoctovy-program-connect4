@@ -74,7 +74,7 @@ class Board:
     def is_dropable(self,col):
         return self.search_direction((0,col),(1,0))[0] == 0
 
-    def check_for_win(self,row,col,color,debug=False):
+    def check_for_win(self,row,col,color):
         dirs = []
         for i in range(-1,1):
             for j in range(-1,1):
@@ -85,8 +85,6 @@ class Board:
         first_part = self.search_direction((row,col),(1,-1))
         first_part.reverse()
         dirs.append(first_part+self.search_direction((row,col),(-1,1))[1:])
-        if debug:
-            print(dirs)
         for dir in dirs:
             count = 0
             for num in dir:
