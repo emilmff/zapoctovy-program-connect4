@@ -4,15 +4,23 @@ from math import inf
 from copy import *
 import random
 
+
 class Minimax:
 
 	def __init__(self, board):
+		"""Creates a dictionary that knows what color we are maximizing for
+		:param board: an instance of class board, that minimax is going to be working on
+		:type board: Board 
+		"""
 		self.board = board
+		self.wins = board.wins
 		self.colors = {True:self.board.turn, False:-self.board.turn}
-
 	
 	def eval(self):
-		dic ={-3:0,-2:0,-1:0,0:0, 1:0,2:0,3:0}
+		"""Gives an integer score to the current state of the board, gets directions from two sides of the board, splits them into self.wins sized chunks and counts pieces in those chunks"""
+		dic = {}
+		for i in range(-self.wins+1,self.wins):
+			dic[i] = 0
 		dirs = []
 		for i in range(self.board.rows):
 			for j in range (-1,2):
@@ -24,17 +32,41 @@ class Minimax:
 		
 		for dir in dirs:
 			chunks = []				
-			for i in range(1,(len(dir)//4)+1):
-				chunks.append(dir[(i-1)*4:i*4])
-			if len(dir)%4 != 0:
-				chunks.append(dir[len(dir)-len(dir)%4:])
+			for i in range(1,(len(dir)//self.wins)+1):
+				chunks.append(dir[(i-1)*self.wins:i*self.wins])
+			if len(dir)%self.wins != 0:
+				chunks.append(dir[len(dir)-len(dir)%self.wins:])
 			for c in chunks:
-				dic[c.count(self.colors[True])-c.count(self.colors[False])] +=1				
-		score = dic[-3]*-24 + dic[-2]*-9+dic[2]*10+dic[3]*25
+				dic[c.count(self.colors[True])] +=1
+				dic[c.count(self.colors[False])]+=1
+
+		score = 0
+
+		for i in range(-self.wins+1,self.wins):
+			if i>1:
+				score += i*i*dic[i]
+			elif i<-1:
+				score += (-i*i -1)*dic[i]
+
 		return score
 
 	def minimax(self, depth, alpha, beta, maximizing,prev_row,prev_col):
-
+		"""Minimax algorithm with alpha beta pruning, some extra handling for the flipping of the board
+		:param depth: top what depth should the minimax be searching
+		:type depth: int
+		:param alpha: alpha for pruning
+		:type alpha: int
+		:param beta: beta for pruning
+		:type beta: int
+		:param maximizing: tells the methon whether it's currently minimizing or maximizing
+		:type maximizing: Bool
+		:param prev_row: row where the last piece was dropped, is necessary for the method check_for_win from Board
+		:type prev_row: int
+		:param prev_col: column where the last piece was dropped
+		:type prev_col: int
+		:rtype: (int,int)
+		:return: the value of the board for the best move in the current state, the move
+		"""
 		if (prev_row is not None) and (prev_col is not None):
 			if self.board.until_flip == 2:
 				if self.board.check_for_win(prev_col,prev_row,-self.colors[maximizing]):
@@ -102,5 +134,3 @@ class Minimax:
 			return value, col
 
 					
-
-
