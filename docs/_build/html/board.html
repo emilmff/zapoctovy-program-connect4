@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>board module &#8212; Connect 4t  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-board">
+<span id="board-module"></span><h1>board module<a class="headerlink" href="#module-board" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="board.Board">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">board.</span></span><span class="sig-name descname"><span class="pre">Board</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">until_flip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#board.Board" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="board.Board.change_turn">
+<span class="sig-name descname"><span class="pre">change_turn</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.change_turn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Changes the boards turn</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="board.Board.check_for_win">
+<span class="sig-name descname"><span class="pre">check_for_win</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.check_for_win" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function uses the search_direction method to check all 8 directions around the spot we want to be checking the win from, then it merges them into 4 lists and proceeds to try to find self.wins in a row in them
+:param row: the row we search from
+:type row: int
+:param col: the column we search from
+:type col: int
+:param color: the color we are checking for win for
+:type color: int
+:rtype: Bool
+:return: True if there are self.wins in a row, else False</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="board.Board.drop_piece">
+<span class="sig-name descname"><span class="pre">drop_piece</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.drop_piece" title="Permalink to this definition">¶</a></dt>
+<dd><p>Drops a piece onto the board and returns the location where it fell
+:param col: the column we drop in 
+:type col: int
+:param color: the color to be dropped
+:type color: int
+:rtype: (int,int)
+:return: the row and column where the piece dropped</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="board.Board.flip">
+<span class="sig-name descname"><span class="pre">flip</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.flip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transposes the matrix that represents the board
+:rtype: Board
+:return: this instance of class Board</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="board.Board.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the value on the board at the position row,col
+:param row: which row is the value in
+:type row: int
+:param col: which col is the value in
+:type col: int
+:rtype: int
+:return: value in board at row,col</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="board.Board.in_range">
+<span class="sig-name descname"><span class="pre">in_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.in_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if coordinates are on the board
+:param row: a number
+:type row: int
+:param col: a number
+:type col: int
+:rtype: bool
+:return: returns True if the parameters are in range</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="board.Board.initialize_board">
+<span class="sig-name descname"><span class="pre">initialize_board</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.initialize_board" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transposes the matrix that represents the board
+:rtype: Board
+:return: this instance of class Board</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="board.Board.is_dropable">
+<span class="sig-name descname"><span class="pre">is_dropable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">col</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.is_dropable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks is there is a vacant spot on the top of a column
+:param col: the column we want to check
+:type col: int
+:rtype: bool
+:return: True if is vacant, else False</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="board.Board.possible_moves">
+<span class="sig-name descname"><span class="pre">possible_moves</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.possible_moves" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is specifically for minimax, so that you can easily acces all possible moves
+:rtype: list
+:return: all the columns where you can drop a piece</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="board.Board.print">
+<span class="sig-name descname"><span class="pre">print</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.print" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints out the board without brackets and replaces the color -1 with 2, for alignment
+:rtype: Board
+:return: this instance of class Board</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="board.Board.search_direction">
+<span class="sig-name descname"><span class="pre">search_direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.search_direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fills a list with the numbers from a starting location in a direction
+:param start: the row and column the search starts from
+:type start: (int,int)
+:param dir: the direction which we are searching: “a vector”
+:type dir: (int,int)
+:rtype: list
+:return: list of all values on the board in the given direction, includes the value of the starting point</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="board.Board.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#board.Board.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets value at row, col in board to val
+:param row: which row we want val in
+:type row: int
+:param col: which col we want val in
+:type col: int
+:param val: what are we setting board[row][col] to
+:type val: int
+:rtype: Board
+:return: this instance of class Board</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Connect 4t</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Emil.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/board.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

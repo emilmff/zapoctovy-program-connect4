@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>menu module &#8212; Connect 4t  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-menu">
+<span id="menu-module"></span><h1>menu module<a class="headerlink" href="#module-menu" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="menu.UI">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">menu.</span></span><span class="sig-name descname"><span class="pre">UI</span></span><a class="headerlink" href="#menu.UI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="menu.UI.ai_menu">
+<span class="sig-name descname"><span class="pre">ai_menu</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#menu.UI.ai_menu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives the user the ability to choose what difficulty he wants to play</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="menu.UI.draw_text">
+<span class="sig-name descname"><span class="pre">draw_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#menu.UI.draw_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays text on a pygame screen
+:param text: A string
+:type param: string 
+:param font: font and size 
+:type font: pygame.font.Font
+:param color: color
+:type color: (int,int,int)
+:param surface: the screen we are drawing on
+:type surface: pygame.Surface
+:param x: x coordinate for location
+:type x: int
+:param y: y coordinate for location
+:type y: int</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="menu.UI.end_screen">
+<span class="sig-name descname"><span class="pre">end_screen</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#menu.UI.end_screen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives the user the ability to play again or exit once the game ends</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="menu.UI.game_launcher">
+<span class="sig-name descname"><span class="pre">game_launcher</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#menu.UI.game_launcher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Puts all the menu functions together and launches a game</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="menu.UI.player_menu">
+<span class="sig-name descname"><span class="pre">player_menu</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#menu.UI.player_menu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Asks whether the user wants to go first in the game</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="menu.UI.size_menu">
+<span class="sig-name descname"><span class="pre">size_menu</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#menu.UI.size_menu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates buttons, for selecting the size of the board through the console and selecting the parameter wins for the board</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="menu.main">
+<span class="sig-prename descclassname"><span class="pre">menu.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#menu.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Connect 4t</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Emil.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/menu.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
